@@ -1,5 +1,5 @@
 //
-//  AppDelegate.h
+//  ParallaxTVC.h
 //  Parallax
 //
 //  Created by Jeffrey Camealy on 1/23/13.
@@ -8,5 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface ParallaxTVC : UITableViewController
+
 @end
