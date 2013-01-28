@@ -9,7 +9,7 @@
 #import "ParallaxTVC.h"
 
 @interface ParallaxTVC ()
-- (float)horizontalOffsetForVerticalOffset:(NSInteger)verticalOffset;
+- (float)horizontalOffsetForVerticalOffset:(NSInteger)verticalOffset cellRow:(NSUInteger)row;
 
 @end
 
@@ -25,13 +25,12 @@
 
 #pragma mark - Private API
 
-- (float)horizontalOffsetForVerticalOffset:(NSInteger)verticalOffset {
-    float fraction = (verticalOffset-170)/23.0;
-    if (fraction < 0) {
-        return 0;
-    } else {
-        return powf(fraction, 2.0);
-    }
+- (float)horizontalOffsetForVerticalOffset:(NSInteger)verticalOffset cellRow:(NSUInteger)row {
+    const float startOfCurve = 170;
+    const float scaleOfCurve = 23.0;
+    float fraction = (verticalOffset-startOfCurve)/scaleOfCurve;
+    
+    return fraction < 0 ? 0 : powf(fraction, 2.0);
 }
 
 
@@ -64,13 +63,19 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     float contentOffsetY = self.tableView.contentOffset.y;
-    for (UITableViewCell *cell in [self.tableView visibleCells]) {
+    
+    // Clouds
+    float cloudsRatio = 1.0/10;
+    self.cloudsView.frame = CGRectMake(0, -contentOffsetY*cloudsRatio,
+                                       self.cloudsView.frame.size.width, self.cloudsView.frame.size.height);
+    
+    // Cell
+    NSArray *visibleCells = [self.tableView visibleCells];
+    for (int i = 0; i<visibleCells.count; i++) {
         float relativeOffset = cell.frame.origin.y - contentOffsetY;
-        cell.textLabel.frame = CGRectMake([self horizontalOffsetForVerticalOffset:relativeOffset], cell.textLabel.frame.origin.y,
-                                          cell.textLabel.frame.size.width, cell.textLabel.frame.size.height);
+//        cell.textLabel.frame = CGRectMake([self horizontalOffsetForVerticalOffset:relativeOffset], cell.textLabel.frame.origin.y,
     }
 }
-
 
 @end
 

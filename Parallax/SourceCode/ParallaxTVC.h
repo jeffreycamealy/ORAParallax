@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ParallaxTVC : UITableViewController
+@interface ParallaxTVC : UIViewController
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIImageView *cloudsView;
 
 @end
