@@ -8,14 +8,23 @@
 
 #import "ParallaxTVC.h"
 
-@interface ParallaxTVC ()
-- (float)horizontalOffsetForVerticalOffset:(NSInteger)verticalOffset cellRow:(NSUInteger)row;
+#define ImageCell_ID @"ImageCell"
+#define TextCell_ID @"TextCell"
 
+@interface ParallaxTVC ()
+- (float)horizontalOffsetForVerticalOffset:(NSInteger)verticalOffset cell:(UITableViewCell*)cell cellRow:(NSUInteger)row;
 @end
+
 
 @implementation ParallaxTVC
 
 #pragma mark - View Lifecycle
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self.tableView registerNibNamed:@"PhotoCell" forCellReuseIdentifier:ImageCell_ID];
+    [self.tableView registerNibNamed:@"TextCell" forCellReuseIdentifier:TextCell_ID];
+}
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
@@ -25,12 +34,14 @@
 
 #pragma mark - Private API
 
-- (float)horizontalOffsetForVerticalOffset:(NSInteger)verticalOffset cellRow:(NSUInteger)row {
-    const float startOfCurve = 170;
-    const float scaleOfCurve = 23.0;
+- (float)horizontalOffsetForVerticalOffset:(NSInteger)verticalOffset cell:(UITableViewCell *)cell cellRow:(NSUInteger)row {
+    const float startOfCurve = 200;
+    const float scaleOfCurve = 23;
     float fraction = (verticalOffset-startOfCurve)/scaleOfCurve;
-    
-    return fraction < 0 ? 0 : powf(fraction, 2.0);
+    float horizontalOffset = fraction < 0 ? 0 : powf(fraction, 2.0);
+    int relativeRow = row%3;
+    float alternatedOffset = relativeRow==0 ? horizontalOffset : -horizontalOffset;
+    return alternatedOffset + self.tableView.frame.size.width/2 - cell.frame.size.width/2;
 }
 
 
@@ -40,14 +51,40 @@
     return 100;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    switch (indexPath.row%3) {
+        case 0:
+            return 200;
+            
+        case 1:
+            return 120;
+            
+        case 2:
+            return 200;
     }
     
-    cell.textLabel.text = [NSString stringWithFormat:@"Cell %d", indexPath.row];
+    // Not reachable
+    return 0;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell;
+    int relativeRow = indexPath.row%3;
+    
+    switch (relativeRow) {
+        case 0:
+            cell = [tableView dequeueReusableCellWithIdentifier:ImageCell_ID];
+            break;
+        
+        case 1:
+            cell = [tableView dequeueReusableCellWithIdentifier:TextCell_ID];
+            break;
+            
+        case 2:
+            cell = [[UITableViewCell alloc] init];
+    }
+    
+    cell.tag = indexPath.row;
     return cell;
 }
 
@@ -72,8 +109,10 @@
     // Cell
     NSArray *visibleCells = [self.tableView visibleCells];
     for (int i = 0; i<visibleCells.count; i++) {
+        UITableViewCell *cell = visibleCells[i];
         float relativeOffset = cell.frame.origin.y - contentOffsetY;
-//        cell.textLabel.frame = CGRectMake([self horizontalOffsetForVerticalOffset:relativeOffset], cell.textLabel.frame.origin.y,
+        float cellOffset = [self horizontalOffsetForVerticalOffset:relativeOffset cell:cell cellRow:cell.tag];
+        [cell setFrameOriginX:cellOffset];
     }
 }
 
