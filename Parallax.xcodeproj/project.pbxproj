@@ -48,6 +48,9 @@
 		004C8F2F16C048E6003CCE64 /* vignette@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 004C8F0B16C048E6003CCE64 /* vignette@2x.png */; };
 		008C3D1416B7608500EE97BC /* TextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 008C3D1316B7608500EE97BC /* TextCell.m */; };
 		008C3D1816B7609F00EE97BC /* TextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 008C3D1716B7609F00EE97BC /* TextCell.xib */; };
+		00CDBBAD16C064B6008851D9 /* TwoItemsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 00CDBBAC16C064B6008851D9 /* TwoItemsCell.m */; };
+		00CDBBB516C06BC5008851D9 /* PhoneItemsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00CDBBB416C06BC5008851D9 /* PhoneItemsCell.xib */; };
+		00CDBBB716C07C9E008851D9 /* CameraItemsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00CDBBB616C07C9E008851D9 /* CameraItemsCell.xib */; };
 		00D61B1F16B051F0006CC3BD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00D61B1E16B051F0006CC3BD /* UIKit.framework */; };
 		00D61B2116B051F0006CC3BD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00D61B2016B051F0006CC3BD /* Foundation.framework */; };
 		00D61B2316B051F0006CC3BD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00D61B2216B051F0006CC3BD /* CoreGraphics.framework */; };
@@ -120,6 +123,10 @@
 		008C3D1216B7608500EE97BC /* TextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TextCell.h; path = SourceCode/TextCell.h; sourceTree = "<group>"; };
 		008C3D1316B7608500EE97BC /* TextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TextCell.m; path = SourceCode/TextCell.m; sourceTree = "<group>"; };
 		008C3D1716B7609F00EE97BC /* TextCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TextCell.xib; path = SourceCode/TextCell.xib; sourceTree = "<group>"; };
+		00CDBBAB16C064B6008851D9 /* TwoItemsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TwoItemsCell.h; path = SourceCode/TwoItemsCell.h; sourceTree = "<group>"; };
+		00CDBBAC16C064B6008851D9 /* TwoItemsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TwoItemsCell.m; path = SourceCode/TwoItemsCell.m; sourceTree = "<group>"; };
+		00CDBBB416C06BC5008851D9 /* PhoneItemsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PhoneItemsCell.xib; path = SourceCode/PhoneItemsCell.xib; sourceTree = "<group>"; };
+		00CDBBB616C07C9E008851D9 /* CameraItemsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CameraItemsCell.xib; path = SourceCode/CameraItemsCell.xib; sourceTree = "<group>"; };
 		00D61B1A16B051F0006CC3BD /* Parallax.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Parallax.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00D61B1E16B051F0006CC3BD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		00D61B2016B051F0006CC3BD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -252,6 +259,17 @@
 			name = Design;
 			sourceTree = "<group>";
 		};
+		00CDBBAE16C064C2008851D9 /* TwoItemsCell */ = {
+			isa = PBXGroup;
+			children = (
+				00CDBBAB16C064B6008851D9 /* TwoItemsCell.h */,
+				00CDBBAC16C064B6008851D9 /* TwoItemsCell.m */,
+				00CDBBB416C06BC5008851D9 /* PhoneItemsCell.xib */,
+				00CDBBB616C07C9E008851D9 /* CameraItemsCell.xib */,
+			);
+			name = TwoItemsCell;
+			sourceTree = "<group>";
+		};
 		00D61B0F16B051F0006CC3BD = {
 			isa = PBXGroup;
 			children = (
@@ -290,6 +308,7 @@
 				008C3D1916B761C200EE97BC /* Design */,
 				0031BC7016B70A3C007F6FF1 /* AppDelegate */,
 				0031BC6E16B7006C007F6FF1 /* ParallaxTVC */,
+				00CDBBAE16C064C2008851D9 /* TwoItemsCell */,
 				0031BC8B16B75A88007F6FF1 /* PhotoCell */,
 				008C3D1616B7608700EE97BC /* TextCell */,
 				00D61B2516B051F0006CC3BD /* Supporting Files */,
@@ -445,6 +464,8 @@
 				004C8F2D16C048E6003CCE64 /* twitter_btn@2x.png in Resources */,
 				004C8F2E16C048E6003CCE64 /* vignette.png in Resources */,
 				004C8F2F16C048E6003CCE64 /* vignette@2x.png in Resources */,
+				00CDBBB516C06BC5008851D9 /* PhoneItemsCell.xib in Resources */,
+				00CDBBB716C07C9E008851D9 /* CameraItemsCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -498,6 +519,7 @@
 				00D61B5516B052A2006CC3BD /* ParallaxTVC.m in Sources */,
 				0031BC8A16B75A86007F6FF1 /* PhotoCell.m in Sources */,
 				008C3D1416B7608500EE97BC /* TextCell.m in Sources */,
+				00CDBBAD16C064B6008851D9 /* TwoItemsCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

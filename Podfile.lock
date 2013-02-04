@@ -1,0 +1,42 @@
+
+PODS:
+- BMUtilityPack (1.0.4):
+  - BMUtilityPack/BMColors (= 1.0.4)
+  - BMUtilityPack/BMDebugUtilities (= 1.0.4)
+  - BMUtilityPack/BMDispatch (= 1.0.4)
+  - BMUtilityPack/BMInitMacros (= 1.0.4)
+  - BMUtilityPack/BMNSBundleUtilities (= 1.0.4)
+  - BMUtilityPack/BMSelectorButton (= 1.0.4)
+  - BMUtilityPack/UIImageView+Utilities (= 1.0.4)
+  - BMUtilityPack/UITableView+Utilities (= 1.0.4)
+  - BMUtilityPack/UIView+FrameManipulations (= 1.0.4)
+- BMUtilityPack/BMColors (1.0.4)
+- BMUtilityPack/BMDebugUtilities (1.0.4)
+- BMUtilityPack/BMDispatch (1.0.4)
+- BMUtilityPack/BMInitMacros (1.0.4)
+- BMUtilityPack/BMNSBundleUtilities (1.0.4)
+- BMUtilityPack/BMSelectorButton (1.0.4)
+- BMUtilityPack/UIImageView+Utilities (1.0.4)
+- BMUtilityPack/UITableView+Utilities (1.0.4)
+- BMUtilityPack/UIView+FrameManipulations (1.0.4)
+
+DEPENDENCIES:
+- BMUtilityPack (from `https://github.com/jeffreycamealy/BMUtilityPack.git')
+
+EXTERNAL SOURCES:
+  BMUtilityPack:
+    :git: https://github.com/jeffreycamealy/BMUtilityPack.git
+
+SPEC CHECKSUMS:
+  BMUtilityPack: e809967ac8ce93cd38015003f00935dac569cf8b
+  BMUtilityPack/BMColors: e809967ac8ce93cd38015003f00935dac569cf8b
+  BMUtilityPack/BMDebugUtilities: e809967ac8ce93cd38015003f00935dac569cf8b
+  BMUtilityPack/BMDispatch: e809967ac8ce93cd38015003f00935dac569cf8b
+  BMUtilityPack/BMInitMacros: e809967ac8ce93cd38015003f00935dac569cf8b
+  BMUtilityPack/BMNSBundleUtilities: e809967ac8ce93cd38015003f00935dac569cf8b
+  BMUtilityPack/BMSelectorButton: e809967ac8ce93cd38015003f00935dac569cf8b
+  BMUtilityPack/UIImageView+Utilities: e809967ac8ce93cd38015003f00935dac569cf8b
+  BMUtilityPack/UITableView+Utilities: e809967ac8ce93cd38015003f00935dac569cf8b
+  BMUtilityPack/UIView+FrameManipulations: e809967ac8ce93cd38015003f00935dac569cf8b
+
+COCOAPODS: 0.16.1
