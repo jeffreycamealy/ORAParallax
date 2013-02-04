@@ -10,9 +10,11 @@
 
 #define ImageCell_ID @"ImageCell"
 #define TextCell_ID @"TextCell"
+#define NumPages 4
 
 @interface ParallaxTVC ()
 - (float)horizontalOffsetForVerticalOffset:(NSInteger)verticalOffset cell:(UITableViewCell*)cell cellRow:(NSUInteger)row;
+- (void)setupLayer2;
 @end
 
 
@@ -24,6 +26,7 @@
     [super viewDidLoad];
     [self.tableView registerNibNamed:@"PhotoCell" forCellReuseIdentifier:ImageCell_ID];
     [self.tableView registerNibNamed:@"TextCell" forCellReuseIdentifier:TextCell_ID];
+    [self setupLayer2];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -42,6 +45,19 @@
     int relativeRow = row%3;
     float alternatedOffset = relativeRow==0 ? horizontalOffset : -horizontalOffset;
     return alternatedOffset + self.tableView.frame.size.width/2 - cell.frame.size.width/2;
+}
+
+- (void)setupLayer2 {
+    float viewWidth = self.view.bounds.size.width;
+    float viewHeight = self.view.bounds.size.height;
+    
+    NSArray *itemsImageNames = @[@"iphone_model", @"detailBlock1", @"detailBlock2", @"detailBlock3", @"detailBlock4"];
+    [self.layer2 setFrameHeight:viewHeight*NumPages];
+    for (int i = 0; i < NumPages; i++) {
+        UIImageView *itemImageView = [UIImageView imageViewWithImageNamed:itemsImageNames[i]];
+        itemImageView.center = CGPointMake(viewWidth/2, viewHeight/2 + viewHeight*i);
+        [self.layer2 addSubview:itemImageView];
+    }
 }
 
 
@@ -101,10 +117,9 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     float contentOffsetY = self.tableView.contentOffset.y;
     
-    // Clouds
-    float cloudsRatio = 1.0/10;
-    self.cloudsView.frame = CGRectMake(0, -contentOffsetY*cloudsRatio,
-                                       self.cloudsView.frame.size.width, self.cloudsView.frame.size.height);
+    // Layer2
+    float layer2Ratio = 1.0/4;
+    [self.layer2 setFrameOriginY:-contentOffsetY*layer2Ratio];
     
     // Cell
     NSArray *visibleCells = [self.tableView visibleCells];
@@ -116,6 +131,10 @@
     }
 }
 
+- (void)viewDidUnload {
+    [self setLayer2:nil];
+    [super viewDidUnload];
+}
 @end
 
 

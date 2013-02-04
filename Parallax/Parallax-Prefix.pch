@@ -13,4 +13,5 @@
     #import <Foundation/Foundation.h>
     #import "UIView+FrameManipulations.h"
     #import "UITableView+Utilities.h"
+    #import "UIImageView+Utilities.h"
 #endif
