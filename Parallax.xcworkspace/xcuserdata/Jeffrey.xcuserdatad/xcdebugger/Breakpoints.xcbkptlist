@@ -8,11 +8,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Parallax/SourceCode/ParallaxTVC.m"
-         timestampString = "381789526.05962"
+         timestampString = "381793967.088833"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "103"
-         endingLineNumber = "103"
+         startingLineNumber = "97"
+         endingLineNumber = "97"
          landmarkName = "-updateLayer2ForVerticalOffset:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -21,26 +21,35 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Parallax/SourceCode/ParallaxTVC.m"
-         timestampString = "381789526.05962"
+         timestampString = "381793967.088833"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "108"
-         endingLineNumber = "108"
+         startingLineNumber = "102"
+         endingLineNumber = "102"
          landmarkName = "-updateLayer3ForVerticalOffset:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "No"
+         shouldBeEnabled = "Yes"
          ignoreCount = "0"
-         continueAfterRunningActions = "No"
+         condition = "self.centerItem != nil"
+         continueAfterRunningActions = "Yes"
          filePath = "Parallax/SourceCode/ParallaxItemsCell.m"
-         timestampString = "381778983.374462"
+         timestampString = "381795063.843834"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "51"
-         endingLineNumber = "51"
-         landmarkName = "-offsetItemsForVerticalOffset:"
+         startingLineNumber = "65"
+         endingLineNumber = "65"
+         landmarkName = "-offsetCenterItemForVerticalOffset:"
          landmarkType = "5">
+         <Actions>
+            <BreakpointActionProxy
+               ActionType = "Xcode.BreakpointAction.DebuggerCommand">
+               <ActionContent
+                  consoleCommand = "print verticalOffset">
+               </ActionContent>
+            </BreakpointActionProxy>
+         </Actions>
       </FileBreakpoint>
    </FileBreakpoints>
 </Bucket>

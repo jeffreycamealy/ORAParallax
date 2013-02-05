@@ -66,21 +66,15 @@
     NSArray *itemsImageNames = @[@"iphone_model", @"detailBlock1", @"detailBlock2", @"detailBlock3", @"detailBlock4"];
     [self.layer2 setFrameHeight:viewHeight*NumPages];
     for (int i = 0; i < NumPages; i++) {
-        // Layer2
         UIImageView *itemImageView = [UIImageView imageViewWithImageNamed:itemsImageNames[i]];
         itemImageView.center = CGPointMake(viewWidth/2, viewHeight/2 + viewHeight*i);
         [self.layer2 addSubview:itemImageView];
-        
-        // HotSpots
-        float spotLength = 200;
-        NSRange range = NSMakeRange(viewHeight*i+spotLength*i, spotLength);
-        [hotSpots addObject:[NSValue valueWithRange:range]];
     }
 }
 
 - (NSArray *)makeLayer3Cells {
     UITableViewCell *topSpacer = [[ParallaxItemsCell alloc] init];
-    [topSpacer setFrameHeight:162];
+    [topSpacer setFrameHeight:90];
     
     UITableViewCell *secondSpacer = [[ParallaxItemsCell alloc] init];
     [secondSpacer setFrameHeight:self.view.frame.size.height*2-150];
@@ -119,23 +113,27 @@
 // q: quadrant (H+D segment)
 // s: start of next hotspot
 //
-#define H 460*2+200
-#define D 200
+#define H 1050
+#define D 150
 //
 - (float)hotSpotOffsetForVerticalOffset:(float)verticalOffset {
     float o  = self.scrollView.contentOffset.y;
     float q = ceilf(o/(H+D));
     float s = (q * H) + (q-1) * D;
     
+    float hotSpotOffset = 0;
     if (q < 1) {
-        return o;
+        hotSpotOffset = o;
     }
     else if (o > s) {
-        return q*H;
+        hotSpotOffset = q*H;
     }
     else {
-        return o - (q-1)*D;
+        hotSpotOffset = o - (q-1)*D;
     }
+    
+    NSLog(@"o:%f, q:%f, s:%f, hot:%f", o,q,s,hotSpotOffset);
+    return hotSpotOffset;
 }
 
 
@@ -171,7 +169,6 @@
         [self updateLayer2ForVerticalOffset:hotSpotOffset];
         [self updateLayer3ForVerticalOffset:hotSpotOffset];
     }
-
 }
 
 - (void)viewDidUnload {
