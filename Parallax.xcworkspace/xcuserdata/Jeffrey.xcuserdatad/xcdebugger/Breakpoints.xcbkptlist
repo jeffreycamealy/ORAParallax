@@ -8,25 +8,38 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Parallax/SourceCode/ParallaxTVC.m"
-         timestampString = "381714471.605404"
+         timestampString = "381789526.05962"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "80"
-         endingLineNumber = "80"
-         landmarkName = "-makeLayer3Cells"
+         startingLineNumber = "103"
+         endingLineNumber = "103"
+         landmarkName = "-updateLayer2ForVerticalOffset:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Parallax/SourceCode/ParallaxTVC.m"
-         timestampString = "381714471.605404"
+         timestampString = "381789526.05962"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "148"
-         endingLineNumber = "148"
-         landmarkName = "-scrollViewDidScroll:"
+         startingLineNumber = "108"
+         endingLineNumber = "108"
+         landmarkName = "-updateLayer3ForVerticalOffset:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Parallax/SourceCode/ParallaxItemsCell.m"
+         timestampString = "381778983.374462"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "51"
+         endingLineNumber = "51"
+         landmarkName = "-offsetItemsForVerticalOffset:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

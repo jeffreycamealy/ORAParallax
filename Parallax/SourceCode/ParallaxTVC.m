@@ -7,20 +7,23 @@
 //
 
 #import "ParallaxTVC.h"
-#import "TwoItemsCell.h"
+#import "ParallaxItemsCell.h"
 
 #define ImageCell_ID @"ImageCell"
 #define TextCell_ID @"TextCell"
 #define NumPages 4
 
+
 @interface ParallaxTVC () {
     NSArray *layer3Cells;
+    NSMutableArray *hotSpots;
 }
 - (float)horizontalOffsetForVerticalOffset:(NSInteger)verticalOffset cell:(UITableViewCell*)cell cellRow:(NSUInteger)row;
 - (void)setupLayer2;
 - (void)updateLayer2ForVerticalOffset:(float)verticalOffset;
 - (void)updateLayer3ForVerticalOffset:(float)verticalOffset;
 - (NSArray *)makeLayer3Cells;
+- (float)hotSpotOffsetForVerticalOffset:(float)verticalOffset;
 @end
 
 
@@ -34,7 +37,7 @@
     [self.tableView registerNibNamed:@"TextCell" forCellReuseIdentifier:TextCell_ID];
     [self setupLayer2];
     layer3Cells = [self makeLayer3Cells];
-    
+    self.scrollView.contentSize = CGSizeMake(320, NumPages*2*self.view.frame.size.height);
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -59,35 +62,42 @@
     float viewWidth = self.view.bounds.size.width;
     float viewHeight = self.view.bounds.size.height;
     
+    hotSpots = [NSMutableArray array];
     NSArray *itemsImageNames = @[@"iphone_model", @"detailBlock1", @"detailBlock2", @"detailBlock3", @"detailBlock4"];
     [self.layer2 setFrameHeight:viewHeight*NumPages];
     for (int i = 0; i < NumPages; i++) {
+        // Layer2
         UIImageView *itemImageView = [UIImageView imageViewWithImageNamed:itemsImageNames[i]];
         itemImageView.center = CGPointMake(viewWidth/2, viewHeight/2 + viewHeight*i);
         [self.layer2 addSubview:itemImageView];
+        
+        // HotSpots
+        float spotLength = 200;
+        NSRange range = NSMakeRange(viewHeight*i+spotLength*i, spotLength);
+        [hotSpots addObject:[NSValue valueWithRange:range]];
     }
 }
 
 - (NSArray *)makeLayer3Cells {
-    UITableViewCell *topSpacer = [[TwoItemsCell alloc] init];
+    UITableViewCell *topSpacer = [[ParallaxItemsCell alloc] init];
     [topSpacer setFrameHeight:162];
     
-    UITableViewCell *secondSpacer = [[TwoItemsCell alloc] init];
+    UITableViewCell *secondSpacer = [[ParallaxItemsCell alloc] init];
     [secondSpacer setFrameHeight:self.view.frame.size.height*2-150];
     
-    UITableViewCell *inBetweenSpacer = [[TwoItemsCell alloc] init];
+    UITableViewCell *inBetweenSpacer = [[ParallaxItemsCell alloc] init];
     [inBetweenSpacer setFrameHeight:self.view.frame.size.height*2-34];
-    return @[topSpacer,
-             [[TwoItemsCell alloc] initWithNibName:@"PhoneItemsCell"],
+    return @[topSpacer, 
+             [[ParallaxItemsCell alloc] initWithNibName:@"PhoneItemsCell"],
              secondSpacer,
-             [[TwoItemsCell alloc] initWithNibName:@"CameraItemsCell"],
+             [[ParallaxItemsCell alloc] initWithNibName:@"CameraItemsCell"],
              inBetweenSpacer,
-             [[TwoItemsCell alloc] initWithNibName:@"CameraItemsCell"],
+             [[ParallaxItemsCell alloc] initWithNibName:@"CameraItemsCell"],
              inBetweenSpacer,
-             [[TwoItemsCell alloc] initWithNibName:@"CameraItemsCell"],
+             [[ParallaxItemsCell alloc] initWithNibName:@"CameraItemsCell"],
              inBetweenSpacer,
-             [[TwoItemsCell alloc] initWithNibName:@"CameraItemsCell"],
-             [[TwoItemsCell alloc] initWithNibName:@"PhoneItemsCell"]];
+             [[ParallaxItemsCell alloc] initWithNibName:@"CameraItemsCell"],
+             [[ParallaxItemsCell alloc] initWithNibName:@"PhoneItemsCell"]];
 }
 
 - (void)updateLayer2ForVerticalOffset:(float)verticalOffset {
@@ -96,9 +106,35 @@
 }
 
 - (void)updateLayer3ForVerticalOffset:(float)verticalOffset {
-    for (TwoItemsCell *visibleCell in [self.tableView visibleCells]) {
+    for (ParallaxItemsCell *visibleCell in [self.tableView visibleCells]) {
         float relativeOffset = visibleCell.frame.origin.y - verticalOffset;
         [visibleCell offsetItemsForVerticalOffset:relativeOffset];
+    }
+}
+
+//
+// o: vertOffset
+// H: height between hotspots
+// D: length of hotspot
+// q: quadrant (H+D segment)
+// s: start of next hotspot
+//
+#define H 460*2+200
+#define D 200
+//
+- (float)hotSpotOffsetForVerticalOffset:(float)verticalOffset {
+    float o  = self.scrollView.contentOffset.y;
+    float q = ceilf(o/(H+D));
+    float s = (q * H) + (q-1) * D;
+    
+    if (q < 1) {
+        return o;
+    }
+    else if (o > s) {
+        return q*H;
+    }
+    else {
+        return o - (q-1)*D;
     }
 }
 
@@ -114,24 +150,6 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    UITableViewCell *cell;
-//    int relativeRow = indexPath.row%3;
-//    
-//    switch (relativeRow) {
-//        case 0:
-//            cell = [tableView dequeueReusableCellWithIdentifier:ImageCell_ID];
-//            break;
-//        
-//        case 1:
-//            cell = [tableView dequeueReusableCellWithIdentifier:TextCell_ID];
-//            break;
-//            
-//        case 2:
-//            cell = [[UITableViewCell alloc] init];
-//    }
-//    
-//    cell.tag = indexPath.row;
-//    return cell;
     return layer3Cells[indexPath.row];
 }
 
@@ -146,12 +164,19 @@
 #pragma mark - ScrollViewDelegate Method
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    [self updateLayer2ForVerticalOffset:self.tableView.contentOffset.y];
-    [self updateLayer3ForVerticalOffset:self.tableView.contentOffset.y];
+    if (scrollView == self.scrollView) {
+        float hotSpotOffset = [self hotSpotOffsetForVerticalOffset:self.scrollView.contentOffset.y];
+        
+        self.tableView.contentOffset = CGPointMake(0, hotSpotOffset);
+        [self updateLayer2ForVerticalOffset:hotSpotOffset];
+        [self updateLayer3ForVerticalOffset:hotSpotOffset];
+    }
+
 }
 
 - (void)viewDidUnload {
     [self setLayer2:nil];
+    [self setScrollView:nil];
     [super viewDidUnload];
 }
 @end

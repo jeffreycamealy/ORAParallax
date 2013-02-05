@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TwoItemsCell : UITableViewCell
+@interface ParallaxItemsCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *item1;
 @property (weak, nonatomic) IBOutlet UIImageView *item2;
+@property (weak, nonatomic) IBOutlet UIImageView *centerItem;
 - (id)initWithNibName:(NSString*)name;
 - (void)offsetItemsForVerticalOffset:(float)verticalOffset;
 @end

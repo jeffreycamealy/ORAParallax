@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ParallaxTVC : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface ParallaxTVC : UIViewController <UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIView *layer2;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @end
