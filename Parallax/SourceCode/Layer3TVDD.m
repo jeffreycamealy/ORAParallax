@@ -40,7 +40,10 @@ NSInit(
     [cameraItemsCell setFrameHeight:ScreenHeight*2];
 //    cameraItemsCell.contentView.backgroundColor = [UIColor colorWithRed:50 green:255 blue:50 alpha:0.3];
     
-    return @[dummyCell, phoneItemCell, cameraItemsCell];
+    ParallaxItemsCell *frameItemsCell = [[ParallaxItemsCell alloc] initWithNibName:@"FrameItemsCell"];
+    [frameItemsCell setFrameHeight:ScreenHeight*2];
+    
+    return @[dummyCell, phoneItemCell, cameraItemsCell, frameItemsCell];
 }
 
 #pragma mark - Tableview Data Source
