@@ -91,7 +91,6 @@
         hotSpotOffset = o - (q-1)*D;
     }
     
-//    NSLog(@"o:%f, q:%f, s:%f, hot:%f", o,q,s,hotSpotOffset);
     return hotSpotOffset;
 }
 

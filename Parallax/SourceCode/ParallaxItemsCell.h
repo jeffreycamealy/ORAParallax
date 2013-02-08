@@ -12,7 +12,7 @@
 @property (weak, nonatomic) IBOutlet UIView *centeringView;
 @property (weak, nonatomic) IBOutlet UIImageView *item1;
 @property (weak, nonatomic) IBOutlet UIImageView *item2;
-@property (weak, nonatomic) IBOutlet UIImageView *itemMiddle;
+@property (weak, nonatomic) IBOutlet UIView *itemMiddle;
 - (id)initWithNibName:(NSString*)name;
 - (void)offsetItemsForVerticalOffset:(float)verticalOffset;
 @end

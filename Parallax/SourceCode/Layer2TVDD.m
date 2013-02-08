@@ -27,19 +27,19 @@ NSInit(
 #pragma mark - Private API
 
 - (NSArray *)makeCells {
-    NSArray *imageNames = @[@"iphone_model", @"detailBlock1", @"detailBlock2", @"detailBlock3", @"detailBlock4"];
+    NSArray *imageNames = @[@"Parallax", @"iphone_model", @"detailBlock1", @"detailBlock2", @"detailBlock3", @"detailBlock4"];
     NSMutableArray *tempCells = [NSMutableArray array];
     
     // Add first label
-    UITableViewCell *labelCell = [[UITableViewCell alloc] init];
-    [labelCell setFrameHeight:ScreenHeight];
-    UILabel *label = [[UILabel alloc] init];
-    label.text = @"Welcome.  Scroll to learn.";
-    [label sizeToFit];
-    label.backgroundColor = [UIColor clearColor];
-    label.center = CGPointMake(labelCell.frame.size.width/2, labelCell.frame.size.height/2);
-    [labelCell addSubview:label];
-    [tempCells addObject:labelCell];
+//    UITableViewCell *labelCell = [[UITableViewCell alloc] init];
+//    [labelCell setFrameHeight:ScreenHeight];
+//    UILabel *label = [[UILabel alloc] init];
+//    label.text = @"Welcome.  Scroll to learn.";
+//    [label sizeToFit];
+//    label.backgroundColor = [UIColor clearColor];
+//    label.center = CGPointMake(labelCell.frame.size.width/2, labelCell.frame.size.height/2);
+//    [labelCell addSubview:label];
+//    [tempCells addObject:labelCell];
     
     // Add images
     for (NSString *imageName in imageNames) {
