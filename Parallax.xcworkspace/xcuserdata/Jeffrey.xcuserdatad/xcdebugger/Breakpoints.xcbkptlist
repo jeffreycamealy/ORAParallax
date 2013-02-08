@@ -8,11 +8,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Parallax/SourceCode/ParallaxTVC.m"
-         timestampString = "381793967.088833"
+         timestampString = "381998568.217576"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "97"
-         endingLineNumber = "97"
+         startingLineNumber = "76"
+         endingLineNumber = "76"
          landmarkName = "-updateLayer2ForVerticalOffset:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -21,11 +21,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Parallax/SourceCode/ParallaxTVC.m"
-         timestampString = "381793967.088833"
+         timestampString = "381998568.217576"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "102"
-         endingLineNumber = "102"
+         startingLineNumber = "81"
+         endingLineNumber = "81"
          landmarkName = "-updateLayer3ForVerticalOffset:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -35,11 +35,11 @@
          condition = "self.centerItem != nil"
          continueAfterRunningActions = "Yes"
          filePath = "Parallax/SourceCode/ParallaxItemsCell.m"
-         timestampString = "381795063.843834"
+         timestampString = "381997671.608803"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "65"
-         endingLineNumber = "65"
+         startingLineNumber = "66"
+         endingLineNumber = "66"
          landmarkName = "-offsetCenterItemForVerticalOffset:"
          landmarkType = "5">
          <Actions>

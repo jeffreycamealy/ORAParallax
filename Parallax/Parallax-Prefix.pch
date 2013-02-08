@@ -15,4 +15,5 @@
     #import "UITableView+Utilities.h"
     #import "UIImageView+Utilities.h"
     #import "BMNSBundleUtilities.h"
+    #import "BMInitMacros.h"
 #endif

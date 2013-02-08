@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface ParallaxItemsCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIView *centeringView;
 @property (weak, nonatomic) IBOutlet UIImageView *item1;
 @property (weak, nonatomic) IBOutlet UIImageView *item2;
 @property (weak, nonatomic) IBOutlet UIImageView *centerItem;

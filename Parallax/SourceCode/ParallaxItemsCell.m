@@ -24,20 +24,21 @@
 
 @implementation ParallaxItemsCell
 
-#pragma mark - Init Method
+#pragma mark - Init Methods
 
-- (id)init {
-    if (self = [super init]) {
-        [self commonSetup];
-    }
-    return self;
-}
+NSInit(
+    [self commonSetup];
+);
 
 - (id)initWithNibName:(NSString*)name {
     self = (ParallaxItemsCell *)rootViewFromNibNamed(name);
     item1Goal = self.item1.frame.origin;
     item2Goal = self.item2.frame.origin;
     centerItemGoal = self.centerItem.frame.origin;
+    self.centeringView.autoresizingMask = (UIViewAutoresizingFlexibleLeftMargin     |
+                                           UIViewAutoresizingFlexibleRightMargin    |
+                                           UIViewAutoresizingFlexibleTopMargin      |
+                                           UIViewAutoresizingFlexibleBottomMargin);
     [self commonSetup];
     return self;
 }
@@ -63,7 +64,7 @@
 
 - (void)offsetCenterItemForVerticalOffset:(float)verticalOffset {
     float targetY = 210;
-    float lenghtOfAlphaFade = 30;
+    float lenghtOfAlphaFade = 60;
     float cameraVertOffset = -verticalOffset+centerItemGoal.y+targetY;
     
     // Vertical Movement

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0007225A16C4D33600671409 /* Layer3TVDD.m in Sources */ = {isa = PBXBuildFile; fileRef = 0007225916C4D33600671409 /* Layer3TVDD.m */; };
 		0031BC4216B63BAC007F6FF1 /* ParallaxTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0031BC4116B63BAC007F6FF1 /* ParallaxTVC.xib */; };
 		0031BC8A16B75A86007F6FF1 /* PhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0031BC8916B75A86007F6FF1 /* PhotoCell.m */; };
 		0031BC8D16B75AA3007F6FF1 /* PhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0031BC8C16B75AA3007F6FF1 /* PhotoCell.xib */; };
@@ -80,6 +81,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0007225816C4D33600671409 /* Layer3TVDD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Layer3TVDD.h; path = SourceCode/Layer3TVDD.h; sourceTree = "<group>"; };
+		0007225916C4D33600671409 /* Layer3TVDD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Layer3TVDD.m; path = SourceCode/Layer3TVDD.m; sourceTree = "<group>"; };
 		0031BC4116B63BAC007F6FF1 /* ParallaxTVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ParallaxTVC.xib; sourceTree = "<group>"; };
 		0031BC8816B75A86007F6FF1 /* PhotoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhotoCell.h; path = SourceCode/PhotoCell.h; sourceTree = "<group>"; };
 		0031BC8916B75A86007F6FF1 /* PhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhotoCell.m; path = SourceCode/PhotoCell.m; sourceTree = "<group>"; };
@@ -177,6 +180,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0007225B16C4D33A00671409 /* Layer3DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				0007225816C4D33600671409 /* Layer3TVDD.h */,
+				0007225916C4D33600671409 /* Layer3TVDD.m */,
+			);
+			name = Layer3DataSource;
+			sourceTree = "<group>";
+		};
 		0031BC6E16B7006C007F6FF1 /* ParallaxTVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -308,6 +320,7 @@
 				008C3D1916B761C200EE97BC /* Design */,
 				0031BC7016B70A3C007F6FF1 /* AppDelegate */,
 				0031BC6E16B7006C007F6FF1 /* ParallaxTVC */,
+				0007225B16C4D33A00671409 /* Layer3DataSource */,
 				00CDBBAE16C064C2008851D9 /* TwoItemsCell */,
 				0031BC8B16B75A88007F6FF1 /* PhotoCell */,
 				008C3D1616B7608700EE97BC /* TextCell */,
@@ -520,6 +533,7 @@
 				0031BC8A16B75A86007F6FF1 /* PhotoCell.m in Sources */,
 				008C3D1416B7608500EE97BC /* TextCell.m in Sources */,
 				00CDBBAD16C064B6008851D9 /* ParallaxItemsCell.m in Sources */,
+				0007225A16C4D33600671409 /* Layer3TVDD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
