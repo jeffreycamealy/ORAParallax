@@ -67,7 +67,7 @@ NSInit(
 }
 
 - (void)offsetCenterItemForVerticalOffset:(float)verticalOffset {
-    float targetY = 210;
+    float targetY = ScreenHeight;
     float lenghtOfAlphaFade = 60;
     float cameraVertOffset = -verticalOffset+itemMiddleGoal.y+targetY;
     
@@ -96,7 +96,7 @@ NSInit(
 #pragma mark - Private API
 
 - (float)horizontalOffsetForVerticalOffset:(float)verticalOffset {
-    const float startOfCurve = 275;
+    const float startOfCurve = 0;
     const float scaleOfCurve = 23;
     float fraction = (verticalOffset-startOfCurve)/scaleOfCurve;
     float horizontalOffset = fraction < 0 ? 0 : powf(fraction, 2.0);

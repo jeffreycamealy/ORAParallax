@@ -30,15 +30,15 @@ NSInit(
 - (NSArray *)makeCells {
     UITableViewCell *dummyCell = [[ParallaxItemsCell alloc] init];
     [dummyCell setFrameHeight:ScreenHeight*2];
-    dummyCell.contentView.backgroundColor = [UIColor colorWithRed:50 green:50 blue:50 alpha:0.3];
+//    dummyCell.contentView.backgroundColor = [UIColor colorWithRed:50 green:50 blue:50 alpha:0.3];
     
     ParallaxItemsCell *phoneItemCell = [[ParallaxItemsCell alloc] initWithNibName:@"PhoneItemsCell"];
     [phoneItemCell setFrameHeight:ScreenHeight*2];
-    phoneItemCell.contentView.backgroundColor = [UIColor colorWithRed:50 green:50 blue:255 alpha:0.8];
+//    phoneItemCell.contentView.backgroundColor = [UIColor colorWithRed:50 green:50 blue:255 alpha:0.8];
     
     ParallaxItemsCell *cameraItemsCell = [[ParallaxItemsCell alloc] initWithNibName:@"CameraItemsCell"];
     [cameraItemsCell setFrameHeight:ScreenHeight*2];
-    cameraItemsCell.contentView.backgroundColor = [UIColor colorWithRed:50 green:255 blue:50 alpha:0.3];
+//    cameraItemsCell.contentView.backgroundColor = [UIColor colorWithRed:50 green:255 blue:50 alpha:0.3];
     
     return @[dummyCell, phoneItemCell, cameraItemsCell];
 }

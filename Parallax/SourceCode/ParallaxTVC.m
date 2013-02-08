@@ -18,6 +18,7 @@
 @interface ParallaxTVC () {
     Layer2TVDD *layer2TVDD;
     Layer3TVDD *layer3TVDD;
+    BOOL pageAnimating;
 }
 - (void)updateLayer2ForVerticalOffset:(float)verticalOffset;
 - (void)updateLayer3ForVerticalOffset:(float)verticalOffset;
@@ -34,6 +35,7 @@
     
     // UserTouchSrollView
     self.userTouchScrollView.contentSize = CGSizeMake(320, NumPages*2*self.view.frame.size.height);
+    self.userTouchScrollView.decelerationRate = UIScrollViewDecelerationRateNormal*10;
     
     // Layer2
     layer2TVDD = [[Layer2TVDD alloc] init];
@@ -89,7 +91,7 @@
         hotSpotOffset = o - (q-1)*D;
     }
     
-    NSLog(@"o:%f, q:%f, s:%f, hot:%f", o,q,s,hotSpotOffset);
+//    NSLog(@"o:%f, q:%f, s:%f, hot:%f", o,q,s,hotSpotOffset);
     return hotSpotOffset;
 }
 
@@ -97,7 +99,7 @@
 #pragma mark - ScrollViewDelegate Method
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    float hotSpotOffset = [self hotSpotOffsetForVerticalOffset:self.userTouchScrollView.contentOffset.y];
+    float hotSpotOffset = [self hotSpotOffsetForVerticalOffset:scrollView.contentOffset.y];
     
     [self updateLayer2ForVerticalOffset:hotSpotOffset];
     [self updateLayer3ForVerticalOffset:hotSpotOffset];

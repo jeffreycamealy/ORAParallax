@@ -62,11 +62,11 @@ NSInit(
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = cells[indexPath.row];
-    if (indexPath.row%2) {
-        cell.contentView.backgroundColor = [UIColor colorWithRed:0.1 green:0.2 blue:0.9 alpha:0.5];
-    } else {
-        cell.contentView.backgroundColor = [UIColor colorWithRed:0.3 green:0.9 blue:0.1 alpha:0.5];
-    }
+//    if (indexPath.row%2) {
+//        cell.contentView.backgroundColor = [UIColor colorWithRed:0.1 green:0.2 blue:0.9 alpha:0.5];
+//    } else {
+//        cell.contentView.backgroundColor = [UIColor colorWithRed:0.3 green:0.9 blue:0.1 alpha:0.5];
+//    }
     return cell;
 }
 
