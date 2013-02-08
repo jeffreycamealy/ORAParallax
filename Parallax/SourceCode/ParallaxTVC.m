@@ -9,19 +9,17 @@
 #import "ParallaxTVC.h"
 #import "ParallaxItemsCell.h"
 #import "Layer3TVDD.h"
+#import "Layer2TVDD.h"
 
-#define ImageCell_ID @"ImageCell"
-#define TextCell_ID @"TextCell"
 #define NumPages 5
 #define ScreenHeight 548
 
 
 @interface ParallaxTVC () {
-    NSMutableArray *hotSpots;
-    Layer3TVDD *layer3DataSource;
+    Layer2TVDD *layer2TVDD;
+    Layer3TVDD *layer3TVDD;
 }
 - (float)horizontalOffsetForVerticalOffset:(NSInteger)verticalOffset cell:(UITableViewCell*)cell cellRow:(NSUInteger)row;
-- (void)setupLayer2;
 - (void)updateLayer2ForVerticalOffset:(float)verticalOffset;
 - (void)updateLayer3ForVerticalOffset:(float)verticalOffset;
 - (float)hotSpotOffsetForVerticalOffset:(float)verticalOffset;
@@ -34,11 +32,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setupLayer2];
-    self.scrollView.contentSize = CGSizeMake(320, NumPages*2*self.view.frame.size.height);
-    layer3DataSource = [[Layer3TVDD alloc] init];
-    self.tableView.dataSource = layer3DataSource;
-    self.tableView.delegate = layer3DataSource;
+    self.userTouchScrollView.contentSize = CGSizeMake(320, NumPages*2*self.view.frame.size.height);
+    
+    // Layer2
+    layer2TVDD = [[Layer2TVDD alloc] init];
+    self.layer2TableView.dataSource = layer2TVDD;
+    self.layer2TableView.delegate = layer2TVDD;
+    
+    // Layer3
+    layer3TVDD = [[Layer3TVDD alloc] init];
+    self.layer3TableView.dataSource = layer3TVDD;
+    self.layer3TableView.delegate = layer3TVDD;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -56,30 +60,18 @@
     float horizontalOffset = fraction < 0 ? 0 : powf(fraction, 2.0);
     int relativeRow = row%3;
     float alternatedOffset = relativeRow==0 ? horizontalOffset : -horizontalOffset;
-    return alternatedOffset + self.tableView.frame.size.width/2 - cell.frame.size.width/2;
-}
-
-- (void)setupLayer2 {
-    float viewWidth = self.view.bounds.size.width;
-    float viewHeight = self.view.bounds.size.height;
-    
-    hotSpots = [NSMutableArray array];
-    NSArray *itemsImageNames = @[@"iphone_model", @"detailBlock1", @"detailBlock2", @"detailBlock3", @"detailBlock4"];
-    [self.layer2 setFrameHeight:viewHeight*NumPages];
-    for (int i = 0; i < NumPages; i++) {
-        UIImageView *itemImageView = [UIImageView imageViewWithImageNamed:itemsImageNames[i]];
-        itemImageView.center = CGPointMake(viewWidth/2, viewHeight/2 + viewHeight*(i+1));
-        [self.layer2 addSubview:itemImageView];
-    }
+    return alternatedOffset + self.layer3TableView.frame.size.width/2 - cell.frame.size.width/2;
 }
 
 - (void)updateLayer2ForVerticalOffset:(float)verticalOffset {
     float layer2Ratio = 1.0/2;
-    [self.layer2 setFrameOriginY:-verticalOffset*layer2Ratio];
+    self.layer2TableView.contentOffset =  CGPointMake(0, verticalOffset*layer2Ratio);
 }
 
 - (void)updateLayer3ForVerticalOffset:(float)verticalOffset {
-    for (ParallaxItemsCell *visibleCell in [self.tableView visibleCells]) {
+    self.layer3TableView.contentOffset = CGPointMake(0, verticalOffset);
+    
+    for (ParallaxItemsCell *visibleCell in [self.layer3TableView visibleCells]) {
         float relativeOffset = visibleCell.frame.origin.y - verticalOffset;
         [visibleCell offsetItemsForVerticalOffset:relativeOffset];
     }
@@ -96,7 +88,7 @@
 #define D 150
 //
 - (float)hotSpotOffsetForVerticalOffset:(float)verticalOffset {
-    float o  = self.scrollView.contentOffset.y;
+    float o  = self.userTouchScrollView.contentOffset.y;
     float q = ceilf(o/(H+D));
     float s = (q * H) + (q-1) * D;
     
@@ -119,10 +111,9 @@
 #pragma mark - ScrollViewDelegate Method
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    if (scrollView == self.scrollView) {
-        float hotSpotOffset = [self hotSpotOffsetForVerticalOffset:self.scrollView.contentOffset.y];
+    if (scrollView == self.userTouchScrollView) {
+        float hotSpotOffset = [self hotSpotOffsetForVerticalOffset:self.userTouchScrollView.contentOffset.y];
         
-        self.tableView.contentOffset = CGPointMake(0, hotSpotOffset);
         [self updateLayer2ForVerticalOffset:hotSpotOffset];
         [self updateLayer3ForVerticalOffset:hotSpotOffset];
     }

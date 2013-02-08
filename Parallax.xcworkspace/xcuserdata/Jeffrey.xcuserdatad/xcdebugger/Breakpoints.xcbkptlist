@@ -8,11 +8,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Parallax/SourceCode/ParallaxTVC.m"
-         timestampString = "381998568.217576"
+         timestampString = "382000641.597172"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "76"
-         endingLineNumber = "76"
+         startingLineNumber = "66"
+         endingLineNumber = "66"
          landmarkName = "-updateLayer2ForVerticalOffset:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -21,11 +21,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Parallax/SourceCode/ParallaxTVC.m"
-         timestampString = "381998568.217576"
+         timestampString = "382000641.597172"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "81"
-         endingLineNumber = "81"
+         startingLineNumber = "71"
+         endingLineNumber = "71"
          landmarkName = "-updateLayer3ForVerticalOffset:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -50,6 +50,32 @@
                </ActionContent>
             </BreakpointActionProxy>
          </Actions>
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Parallax/SourceCode/Layer2TVDD.m"
+         timestampString = "382000418.712808"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "71"
+         endingLineNumber = "71"
+         landmarkName = "-tableView:heightForRowAtIndexPath:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Parallax/SourceCode/ParallaxTVC.m"
+         timestampString = "382000628.470001"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "56"
+         endingLineNumber = "56"
+         landmarkName = "-horizontalOffsetForVerticalOffset:cell:cellRow:"
+         landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
 </Bucket>
