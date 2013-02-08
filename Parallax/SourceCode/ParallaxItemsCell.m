@@ -13,7 +13,7 @@
 @interface ParallaxItemsCell () {
     CGPoint item1Goal;
     CGPoint item2Goal;
-    CGPoint centerItemGoal;
+    CGPoint itemMiddleGoal;
     float largetPossibleHorizontalOffset;
 }
 - (void)commonSetup;
@@ -34,7 +34,8 @@ NSInit(
     self = (ParallaxItemsCell *)rootViewFromNibNamed(name);
     item1Goal = self.item1.frame.origin;
     item2Goal = self.item2.frame.origin;
-    centerItemGoal = self.centerItem.frame.origin;
+    itemMiddleGoal = self.itemMiddle.frame.origin;
+    self.centeringView.backgroundColor = [UIColor clearColor];
     [self commonSetup];
     return self;
 }
@@ -68,11 +69,11 @@ NSInit(
 - (void)offsetCenterItemForVerticalOffset:(float)verticalOffset {
     float targetY = 210;
     float lenghtOfAlphaFade = 60;
-    float cameraVertOffset = -verticalOffset+centerItemGoal.y+targetY;
+    float cameraVertOffset = -verticalOffset+itemMiddleGoal.y+targetY;
     
     // Vertical Movement
-    if (cameraVertOffset < centerItemGoal.y) {
-        [self.centerItem setFrameOriginY:cameraVertOffset];
+    if (cameraVertOffset < itemMiddleGoal.y) {
+        [self.itemMiddle setFrameOriginY:cameraVertOffset];
     }
     
     // Alpha
@@ -88,7 +89,7 @@ NSInit(
     else { // transitioning
         alpha = (startTarget-verticalOffset)/lenghtOfAlphaFade;
     }
-    self.centerItem.alpha = alpha;
+    self.itemMiddle.alpha = alpha;
 }
 
 
