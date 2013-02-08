@@ -43,7 +43,10 @@ NSInit(
     ParallaxItemsCell *frameItemsCell = [[ParallaxItemsCell alloc] initWithNibName:@"FrameItemsCell"];
     [frameItemsCell setFrameHeight:ScreenHeight*2];
     
-    return @[dummyCell, phoneItemCell, cameraItemsCell, frameItemsCell];
+    ParallaxItemsCell *vignetteItemsCell = [[ParallaxItemsCell alloc] initWithNibName:@"VignetteItemsCell"];
+    [vignetteItemsCell setFrameHeight:ScreenHeight*2];
+    
+    return @[dummyCell, phoneItemCell, cameraItemsCell, frameItemsCell, vignetteItemsCell];
 }
 
 #pragma mark - Tableview Data Source

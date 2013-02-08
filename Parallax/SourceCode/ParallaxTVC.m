@@ -34,7 +34,7 @@
     [super viewDidLoad];
     
     // UserTouchSrollView
-    self.userTouchScrollView.contentSize = CGSizeMake(320, NumPages*2*self.view.frame.size.height);
+    self.userTouchScrollView.contentSize = CGSizeMake(320, NumPages*2*self.view.frame.size.height+100);
     self.userTouchScrollView.decelerationRate = UIScrollViewDecelerationRateNormal*10;
     
     // Layer2

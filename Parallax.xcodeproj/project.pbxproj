@@ -17,6 +17,7 @@
 		003AB78216C4EE8C00E17203 /* customizeButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 003AB77E16C4EE8B00E17203 /* customizeButton@2x.png */; };
 		003AB78316C4EE8C00E17203 /* frame.png in Resources */ = {isa = PBXBuildFile; fileRef = 003AB77F16C4EE8B00E17203 /* frame.png */; };
 		003AB78416C4EE8C00E17203 /* frame@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 003AB78016C4EE8B00E17203 /* frame@2x.png */; };
+		003AB78616C4F08B00E17203 /* VignetteItemsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 003AB78516C4F08B00E17203 /* VignetteItemsCell.xib */; };
 		004C8F0C16C048E6003CCE64 /* app_splash.png in Resources */ = {isa = PBXBuildFile; fileRef = 004C8EE816C048E6003CCE64 /* app_splash.png */; };
 		004C8F0D16C048E6003CCE64 /* app_splash@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 004C8EE916C048E6003CCE64 /* app_splash@2x.png */; };
 		004C8F0E16C048E6003CCE64 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 004C8EEA16C048E6003CCE64 /* background.png */; };
@@ -100,6 +101,7 @@
 		003AB77E16C4EE8B00E17203 /* customizeButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "customizeButton@2x.png"; path = "Design/customizeButton@2x.png"; sourceTree = "<group>"; };
 		003AB77F16C4EE8B00E17203 /* frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = frame.png; path = Design/frame.png; sourceTree = "<group>"; };
 		003AB78016C4EE8B00E17203 /* frame@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "frame@2x.png"; path = "Design/frame@2x.png"; sourceTree = "<group>"; };
+		003AB78516C4F08B00E17203 /* VignetteItemsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VignetteItemsCell.xib; path = SourceCode/VignetteItemsCell.xib; sourceTree = "<group>"; };
 		004C8EE816C048E6003CCE64 /* app_splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = app_splash.png; path = Design/app_splash.png; sourceTree = "<group>"; };
 		004C8EE916C048E6003CCE64 /* app_splash@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "app_splash@2x.png"; path = "Design/app_splash@2x.png"; sourceTree = "<group>"; };
 		004C8EEA16C048E6003CCE64 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background.png; path = Design/background.png; sourceTree = "<group>"; };
@@ -305,6 +307,7 @@
 				00CDBBB416C06BC5008851D9 /* PhoneItemsCell.xib */,
 				00CDBBB616C07C9E008851D9 /* CameraItemsCell.xib */,
 				003AB77B16C4EC0F00E17203 /* FrameItemsCell.xib */,
+				003AB78516C4F08B00E17203 /* VignetteItemsCell.xib */,
 			);
 			name = TwoItemsCell;
 			sourceTree = "<group>";
@@ -512,6 +515,7 @@
 				003AB78216C4EE8C00E17203 /* customizeButton@2x.png in Resources */,
 				003AB78316C4EE8C00E17203 /* frame.png in Resources */,
 				003AB78416C4EE8C00E17203 /* frame@2x.png in Resources */,
+				003AB78616C4F08B00E17203 /* VignetteItemsCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
