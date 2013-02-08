@@ -35,10 +35,6 @@ NSInit(
     item1Goal = self.item1.frame.origin;
     item2Goal = self.item2.frame.origin;
     centerItemGoal = self.centerItem.frame.origin;
-    self.centeringView.autoresizingMask = (UIViewAutoresizingFlexibleLeftMargin     |
-                                           UIViewAutoresizingFlexibleRightMargin    |
-                                           UIViewAutoresizingFlexibleTopMargin      |
-                                           UIViewAutoresizingFlexibleBottomMargin);
     [self commonSetup];
     return self;
 }
@@ -48,6 +44,13 @@ NSInit(
     largetPossibleHorizontalOffset = [self horizontalOffsetForVerticalOffset:ScreenHeight];
 }
 
+
+- (void)setFrame:(CGRect)frame {
+    [super setFrame:frame];
+    
+    // Center in top half
+    self.centeringView.center = CGPointMake(self.frame.size.width/2, self.frame.size.height/4);
+}
 
 #pragma mark - Public API
 

@@ -33,7 +33,6 @@ NSInit(
     // Add first label
     UITableViewCell *labelCell = [[UITableViewCell alloc] init];
     [labelCell setFrameHeight:ScreenHeight];
-//    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 100)];
     UILabel *label = [[UILabel alloc] init];
     label.text = @"Welcome.  Scroll to learn.";
     [label sizeToFit];
@@ -62,7 +61,13 @@ NSInit(
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return cells[indexPath.row];
+    UITableViewCell *cell = cells[indexPath.row];
+    if (indexPath.row%2) {
+        cell.contentView.backgroundColor = [UIColor colorWithRed:0.1 green:0.2 blue:0.9 alpha:0.5];
+    } else {
+        cell.contentView.backgroundColor = [UIColor colorWithRed:0.3 green:0.9 blue:0.1 alpha:0.5];
+    }
+    return cell;
 }
 
 

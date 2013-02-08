@@ -19,7 +19,6 @@
     Layer2TVDD *layer2TVDD;
     Layer3TVDD *layer3TVDD;
 }
-- (float)horizontalOffsetForVerticalOffset:(NSInteger)verticalOffset cell:(UITableViewCell*)cell cellRow:(NSUInteger)row;
 - (void)updateLayer2ForVerticalOffset:(float)verticalOffset;
 - (void)updateLayer3ForVerticalOffset:(float)verticalOffset;
 - (float)hotSpotOffsetForVerticalOffset:(float)verticalOffset;
@@ -32,6 +31,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    // UserTouchSrollView
     self.userTouchScrollView.contentSize = CGSizeMake(320, NumPages*2*self.view.frame.size.height);
     
     // Layer2
@@ -45,23 +46,8 @@
     self.layer3TableView.delegate = layer3TVDD;
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    [self scrollViewDidScroll:nil]; // Setup any visible offsets
-}
-
 
 #pragma mark - Private API
-
-- (float)horizontalOffsetForVerticalOffset:(NSInteger)verticalOffset cell:(UITableViewCell *)cell cellRow:(NSUInteger)row {
-    const float startOfCurve = 200;
-    const float scaleOfCurve = 23;
-    float fraction = (verticalOffset-startOfCurve)/scaleOfCurve;
-    float horizontalOffset = fraction < 0 ? 0 : powf(fraction, 2.0);
-    int relativeRow = row%3;
-    float alternatedOffset = relativeRow==0 ? horizontalOffset : -horizontalOffset;
-    return alternatedOffset + self.layer3TableView.frame.size.width/2 - cell.frame.size.width/2;
-}
 
 - (void)updateLayer2ForVerticalOffset:(float)verticalOffset {
     float layer2Ratio = 1.0/2;
@@ -111,12 +97,10 @@
 #pragma mark - ScrollViewDelegate Method
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    if (scrollView == self.userTouchScrollView) {
-        float hotSpotOffset = [self hotSpotOffsetForVerticalOffset:self.userTouchScrollView.contentOffset.y];
-        
-        [self updateLayer2ForVerticalOffset:hotSpotOffset];
-        [self updateLayer3ForVerticalOffset:hotSpotOffset];
-    }
+    float hotSpotOffset = [self hotSpotOffsetForVerticalOffset:self.userTouchScrollView.contentOffset.y];
+    
+    [self updateLayer2ForVerticalOffset:hotSpotOffset];
+    [self updateLayer3ForVerticalOffset:hotSpotOffset];
 }
 
 @end
